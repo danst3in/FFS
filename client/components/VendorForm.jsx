@@ -48,7 +48,7 @@ const VendorForm = props => {
       <div className="topForm">
         <div className="flexBreak"></div>
         <table id="tableNav" className="table">
-          <thead className="thead-dark">
+          <thead className="thead">
             <tr>
               <th scope="col">Vendor Name</th>
               <th scope="col">Bio/Info</th>
@@ -102,8 +102,8 @@ const VendorForm = props => {
       </div>
 
       {props.vendorItemTog === true && ( //conditional rendering for the customer display, as toggled by the button
-        <div className = "bottomForm">
-          
+        <div className="bottomForm">
+
           <table id="tableNav" className="table">
             <thead className="thead-dark">
               <tr>
@@ -123,8 +123,8 @@ const VendorForm = props => {
             <button id="readyButton" className="button" onClick={() => props.readyToggle()}>All Good? {props.count}{" "}</button>
             <div className="flexBreak"></div>
             {props.readyTog === true &&
-              <input className="itemSubmit" type="submit" disabled={true} value="Data Submitted!!!!"></input>
-            }            
+              <input className="itemSubmit" type="submit" disabled={true} value="Data Submitted!"></input>
+            }
           </form>
         </div>
       )}

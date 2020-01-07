@@ -6,27 +6,37 @@ import Market from "./Market";
 
 class Customer extends Component {
   render(props) {
+    const handleMarketClick = (name) => {
+      console.log("clicked on the market item")
+      this.props.marketDisplayToggle();
+      this.props.findAllVendorsPerMarketAsyncThunk(name);
+    }
     let dropdownItem = [];
     for (let i = 0; i < this.props.arrayOfMarkets.length; i++) {
       dropdownItem.push(
-        <Dropdown.Item key={i} onClick={() => this.props.marketDisplayToggle()}>
+
+        <Dropdown.Item key={i}
+          onClick={() => handleMarketClick(this.props.arrayOfMarkets[i])}>
           {this.props.arrayOfMarkets[i]}
         </Dropdown.Item>
       );
     }
     return (
-      <div>
+      <div className="dropdownButton">
         <DropdownButton
-          id="Markets Dropdown"
+          id="MarketsDropdown"
           title="Farmer's Markets"
           size="lg"
+          className="dropdownButton"
         >
-          {dropdownItem};
+          {dropdownItem}
         </DropdownButton>
 
         {this.props.marketDisplayTog === true && (
           <div>
-            <Market vendorList={this.props.vendorList} />
+            <Market
+              vendorList={this.props.vendorList}
+              findAllVendorsPerMarketAsyncThunk={this.props.findAllVendorsPerMarketAsyncThunk} />
           </div>
         )}
       </div>
